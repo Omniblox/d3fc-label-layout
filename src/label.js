@@ -26,7 +26,7 @@ export default (layoutStrategy) => {
             const childRects = nodes
                 .map((node, i) => {
                     let d = select(node).datum();
-                    let childPos = position(d, i, nodes);
+                    let childPos = d.geometry.coordinates; //position(d, i, nodes);
                     let childSize = size(d, i, nodes);
                     return {
                         hidden: false,
@@ -41,7 +41,7 @@ export default (layoutStrategy) => {
             // or number of label.
             const layout = strategy(childRects);
 
-            g.attr('style', (_, i) => 'display:' + (layout[i].hidden ? 'none' : 'inherit'))
+            g.attr('style', (_, i) => 'opacity:0; display:' + (layout[i].hidden ? 'none' : 'inherit'))
                 .attr('transform', (_, i) => 'translate(' + layout[i].x + ', ' + layout[i].y + ')')
                 // set the layout width / height so that children can use SVG layout if required
                 .attr('layout-width', (_, i) => layout[i].width)
@@ -52,6 +52,7 @@ export default (layoutStrategy) => {
             g.call(component);
 
             decorate(g, data, index);
+
         });
     };
 

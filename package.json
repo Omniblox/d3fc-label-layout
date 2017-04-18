@@ -27,7 +27,7 @@
     "d3fc-rebind": "^4.0.1",
     "js-combinatorics": "^0.5.0",
     "ncp": "^2.0.0",
-    "d3fc-scripts": "^1.1.4",
+    "d3fc-scripts": "*",
     "watch-cli": "^0.2.1"
   },
   "dependencies": {
